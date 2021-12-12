@@ -1,0 +1,66 @@
+{
+  "name": "ts-direct-require",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/azu/ts-direct-require",
+  "bugs": {
+    "url": "https://github.com/azu/ts-direct-require/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azu/ts-direct-require.git"
+  },
+  "license": "MIT",
+  "author": "azu",
+  "sideEffects": false,
+  "main": "lib/ts-direct-require.js",
+  "module": "module/ts-direct-require.js",
+  "types": "lib/ts-direct-require.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "module/",
+    "src/"
+  ],
+  "scripts": {
+    "t": "ts-node src/index.ts",
+    "build": "tsc -p . && tsc -p ./tsconfig.module.json",
+    "clean": "rimraf lib/ module/",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "prepare": "git config --local core.hooksPath .githooks",
+    "prepublishOnly": "npm run clean && npm run build",
+    "test": "mocha \"test/**/*.ts\"",
+    "watch": "tsc -p . --watch"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css}": [
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "singleQuote": false,
+    "tabWidth": 4,
+    "trailingComma": "none"
+  },
+  "devDependencies": {
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.12",
+    "lint-staged": "^12.1.2",
+    "mocha": "^9.1.3",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.4.0",
+    "ts-node-test-register": "^10.0.0",
+    "typescript": "^4.5.3"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.178",
+    "globby": "^12.0.2",
+    "lodash": "^4.17.21"
+  }
+}
